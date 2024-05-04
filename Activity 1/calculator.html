@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+    #calculator{
+        font-family: Arial, sans-serif;
+        background-color: black;
+        border-radius: 15px;
+        max-width: 500px;
+        overflow: hidden;
+    }
+    #output{
+        width: 100%;
+        padding: 20px;
+        font-size: 5rem;
+        text-align: left;
+        border: none;
+        background-color: #3f3f3f;
+        color: white;
+    }
+    #keys{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        padding: 25px;
+    }
+    button{
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        border: none;
+        background-color:   #3f3f3f;
+        color: white;
+        font-size: 3rem;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: #3f3f3f;
+    }
+    button:active{
+        background-color: #3f3f3f;
+    }
+    .operator-btn{
+        background-color: orange;
+    }
+    .operator-btn:hover{
+        background-color: orange;
+    }
+    .operator-btn:active{
+        background-color: orange;
+    }
+    </style>
+</head>
+<body>
+
+    <div id="calculator">
+      <input id="output">
+        <div id="keys">
+          <button onclick="include('+')" class="operator-btn">+</button>
+          <button onclick="include('7')">7</button>
+          <button onclick="include('8')">8</button>
+          <button onclick="include('9')">9</button>
+          <button onclick="include('-')" class="operator-btn">-</button>
+          <button onclick="include('4')">4</button>
+          <button onclick="include('5')">5</button>
+          <button onclick="include('6')">6</button>
+          <button onclick="include('*')" class="operator-btn">*</button>
+          <button onclick="include('1')">1</button>
+          <button onclick="include('2')">2</button>
+          <button onclick="include('3')">3</button>
+          <button onclick="include('/')" class="operator-btn">/</button>
+          <button onclick="include('0')">0</button>
+          <button onclick="include('.')">.</button>
+          <button onclick="calculate()">=</button>
+          <button onclick="clearOutput()" class="operator-btn">C</button>
+          
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const output = document.getElementById("output");
+            const input = output.value;
+            if (/[^0-9+*\/\-.]/.test(input)) {
+                output.value = "Error: Invalid input";
+            } else {
+                output.value = eval(input);
+            }
+        }
+
+        function include(input) {
+            const output = document.getElementById("output");
+            output.value += input;
+        }
+
+        function clearOutput() {
+            const output = document.getElementById("output");
+            output.value = "";
+        }
+    </script>
+</body>
+</html>
