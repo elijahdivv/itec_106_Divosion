@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fibonacci Sequence </title>
+</head>
+<body>
+<center>
+<p>Enter the number of terms in the Fibonacci sequence (less than 100):</p>
+<input type="text" id="numterm" min="1" max="99">
+<button onclick="generateFibonacci()">Generate Sequence</button>
+<div id="result"></div>
+</center>
+
+<script>
+function generateFibonacci() {
+    var numterm = parseInt(document.getElementById("numterm").value);
+    var result_div = document.getElementById("result");
+    result_div.innerHTML = ""; // Clear previous result
+
+    if (isNaN(numterm) || numterm <= 0 || numterm >= 100) {
+        result_div.innerHTML = "Error: Please enter a valid integer greater than 0 and less than 100.";
+    } else {
+        var sequence = [];
+        var a = 0, b = 1;
+        for (var i = 0; i < numterm; i++) {
+            sequence.push(a);
+            var temp = a;
+            a = b;
+            b = temp + b;
+        }
+        result_div.innerHTML = "Fibonacci sequence: " + sequence.join(", ");
+    }
+}
+</script>
+</body>
+</html>
